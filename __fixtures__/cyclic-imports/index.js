@@ -5,3 +5,5 @@ function main() {
   dep2();
   dep1();
 }
+
+main();
