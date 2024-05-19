@@ -1,5 +1,4 @@
 import { parse, traverse } from "@babel/core";
-import t from "@babel/types";
 import { dirname, join } from "node:path";
 import type {
   DependencyGraph,
@@ -94,13 +93,13 @@ export const parseModules: ParseModuleFn = async ({ entry }) => {
   }
   return {
     deps: deps,
-    hasCycle: detectCycles(deps) ?? false,
+    hasCycle: detectDepCycle(deps) ?? false,
     mods: mods,
   };
 };
 
 // detects circular dependencies between files
-function detectCycles(deps: Map<string, string[]>) {
+function detectDepCycle(deps: Map<string, string[]>) {
   const visited = new Set<string>();
   const visiting = new Set<string>();
 

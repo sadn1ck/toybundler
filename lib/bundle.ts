@@ -1,7 +1,6 @@
 import generate from "@babel/generator";
-import type { BundleFileInput } from "./types";
 import t from "@babel/types";
-import { transformFromAstSync } from "@babel/core";
+import type { BundleFileInput } from "./types";
 
 export async function bundleFiles({
   deps,
@@ -20,10 +19,8 @@ export async function bundleFiles({
 
   if (hasCycle) {
     return {
-      error: "Cycles detected while bundling",
+      error: "Cycle detected while bundling",
     };
-    // return "// Cycles detected while bundling";
-    // throw new Error("Cycles detected while bundling");
   }
   const sortedModules = topologicalSort(deps);
   const combinedAst = t.program([], [], "module");

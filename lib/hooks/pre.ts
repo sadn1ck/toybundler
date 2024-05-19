@@ -1,6 +1,4 @@
-import generate from "@babel/generator";
 import traverse from "@babel/traverse";
-import t from "@babel/types";
 import type { PreTransformHook } from "../types";
 
 export const removeDuplicateDeclarations: PreTransformHook = ({
