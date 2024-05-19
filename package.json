@@ -3,10 +3,18 @@
   "module": "./lib/main.js",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/babel__core": "^7.20.5",
+    "@types/babel__generator": "^7.6.8",
+    "@types/babel__parser": "^7.1.1",
+    "@types/babel__traverse": "^7.20.5"
   },
   "peerDependencies": {},
   "dependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/generator": "^7.24.5",
+    "@babel/parser": "^7.24.5",
+    "@babel/traverse": "^7.24.5",
     "acorn": "^8.11.3",
     "acorn-walk": "^8.3.2"
   }

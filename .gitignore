@@ -94,6 +94,8 @@ web_modules/
 
 *.tgz
 
+*.out.js
+
 # Yarn Integrity file
 
 .yarn-integrity
