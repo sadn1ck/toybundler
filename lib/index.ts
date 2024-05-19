@@ -1,6 +1,5 @@
-import { parse } from "@babel/core";
+import { parse, traverse } from "@babel/core";
 import generate from "@babel/generator";
-import traverse from "@babel/traverse";
 import t from "@babel/types";
 import { basename, dirname, join } from "node:path";
 
@@ -57,15 +56,16 @@ async function bundleFiles({
     // throw new Error("Cycles detected while bundling");
   }
   const sortedModules = topologicalSort(dependencyGraph);
+  const combinedAst = t.program([]);
   sortedModules.forEach((moduleId) => {
     const module = modules.get(moduleId);
     if (!module) {
       throw new Error("WTF ded, module not found" + moduleId);
     }
-
-    code += generate(module.mod).code + "\n";
+    combinedAst.body.push(...module.mod.program.body);
   });
 
+  code = generate(combinedAst).code;
   return code;
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "bundler",
-  "module": "./lib/main.js",
+  "module": "./lib/index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
